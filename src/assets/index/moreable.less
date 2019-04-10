@@ -1,5 +1,43 @@
 .@{tabs-prefix-cls} {
+
   &-moreable-nav {
-		width: 99999px;
+
+		&-placeholder {
+			visibility: hidden;
+			position: absolute;
+			width: 99999px;
+			top: 0;
+			left: 0;
+		}
+
+		&-more {
+			visibility: hidden;
+			display: inline-block;
+			box-sizing: border-box;
+	
+			&-dropdown {
+				position: absolute;
+				width: 200px;
+	
+				&-visiable {
+					visibility: hidden;
+				}
+	
+				span {
+					width: 100%;
+					float: left;
+				}
+			}
+	
+			&-visiable {
+				width: auto;
+				visibility: visible;
+			}
+		
+			span {
+				cursor: pointer;
+				padding: 0 12px;
+			}
+		}
 	}
 }
