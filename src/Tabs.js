@@ -165,6 +165,7 @@ export default class Tabs extends React.Component {
       renderTabContent,
       renderTabBar,
       destroyInactiveTabPane,
+      tabType,
       ...restProps
     } = props;
     const cls = classnames({
@@ -184,6 +185,7 @@ export default class Tabs extends React.Component {
       onTabClick: this.onTabClick,
       panels: props.children,
       activeKey: this.state.activeKey,
+      tabType: tabType
     });
 
     const tabContent = React.cloneElement(renderTabContent(), {
@@ -250,18 +252,20 @@ Tabs.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   tabBarPosition: PropTypes.string,
+  tabType: PropTypes.string,
   style: PropTypes.object,
   activeKey: PropTypes.string,
   defaultActiveKey: PropTypes.string,
 };
 
 Tabs.defaultProps = {
-  prefixCls: 'rc-tabs',
+  prefixCls: 'beisen-phoenix-tabs',
   destroyInactiveTabPane: false,
   onChange: noop,
   navWrapper: arg => arg,
   tabBarPosition: 'top',
   children: null,
+  tabType: 'base',
   style: {},
 };
 

@@ -103,16 +103,16 @@ class Demo extends React.Component {
   };
 
   renderTabBarNode = (node) => {
-    return (
-      <WrapTabNode key={node.key} index={node.key} moveTabNode={this.moveTabNode}>{node}</WrapTabNode>
+    return (node
+      // <WrapTabNode key={node.key} index={node.key} moveTabNode={this.moveTabNode}>{}</WrapTabNode>
     );
   };
 
   render() {
     return (
-      <DragDropContextProvider backend={HTML5Backend}>
         <div style={{ margin: 20 }}>
           <Tabs
+           tabType={'base'}
             renderTabBar={() => (
               <MoreableTabBar onTabClick={this.onTabClick}>
                 {this.renderTabBarNode}
@@ -129,7 +129,6 @@ class Demo extends React.Component {
             ))}
           </Tabs>
         </div>
-      </DragDropContextProvider>
     );
   }
 }

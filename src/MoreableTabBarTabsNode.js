@@ -25,7 +25,7 @@ export default class TabBarTabsNode extends React.Component {
   refreshTabNav() {
     const { prefixCls, 'panels': children, getRef } = this.props;
     const containerWidth = getRef('navTabsContainer').offsetWidth;
-    const items = this.containerPlaceholderRef.current.querySelectorAll(`.${prefixCls}-tab`);
+    const items = this.containerPlaceholderRef.current.querySelectorAll(`.${prefixCls}-base-tab`);
     let hasMoreItem = false;
     let lastItemIndex = children.length;
 
@@ -45,7 +45,7 @@ export default class TabBarTabsNode extends React.Component {
     const moreBtn = React.cloneElement(children[0], {
       'key': 99999,
       'disabled': false,
-      'tab': '...'
+      'tab': '...',
     })
     return this.renderChildItem(moreBtn, children.length, true)
   }
@@ -59,19 +59,20 @@ export default class TabBarTabsNode extends React.Component {
       saveRef,
       tabBarPosition,
       renderTabBarNode,
+      tabType
     } = this.props;
 
     if (!child) {
       return;
     }
     const key = child.key;
-    let cls = activeKey === key ? `${prefixCls}-tab-active` : '';
-    cls += ` ${prefixCls}-tab`;
+    let cls = activeKey === key ? `${prefixCls}-${tabType}-tab-active` : '';
+    cls += ` ${prefixCls}-${tabType}-tab`;
     let events = {};
 
     if (!isMoreBtn) {
       if (child.props.disabled) {
-        cls += ` ${prefixCls}-tab-disabled`;
+        cls += ` ${prefixCls}-${tabType}-tab-disabled`;
       } else {
         events = {
           'onClick': this.props.onTabClick.bind(this, key),
@@ -128,7 +129,7 @@ export default class TabBarTabsNode extends React.Component {
 
     return (
       <div className={`${prefixCls}-moreable-nav`} ref={saveRef('navTabsContainer')}>
-        <div>
+        <div className={`${prefixCls}-moreable-nav-show`}>
           { rst.slice(0, lastItemIndex+1) }
           { hasMoreItem && this.renderItemMoreBtn() }
         </div>
@@ -147,6 +148,7 @@ TabBarTabsNode.propTypes = {
   saveRef: PropTypes.func,
   renderTabBarNode: PropTypes.func,
   tabBarPosition: PropTypes.string,
+  tabType: PropTypes.string,
 };
 
 TabBarTabsNode.defaultProps = {

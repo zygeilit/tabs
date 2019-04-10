@@ -1,0 +1,81 @@
+.@{tabs-prefix-cls} {
+
+  // 根节点容器-------------------------------------------------------------------
+  &-base-bar {
+    font-size: 14px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    outline: none;
+    zoom: 1;
+    transition: padding 0.45s;
+    user-select: none;
+  }
+
+  // tab节点-------------------------------------------------------------------
+  &-base-tab {
+    position: relative;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    padding: 2px 4px;
+    font-weight: 500;
+    float: left;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &-base-tab-active {
+    color: #108ee9;
+    cursor: default;
+    height: 100%;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: calc(100% - 2px);
+      width: calc(100% - 2px);
+      border: solid 1px #cccccc;
+    }
+  }
+  
+  &-base-tab-disabled {
+    cursor: default;
+    color: #ccc;
+  }
+
+  // tab节点下划线-------------------------------------------------------------------
+  &-base-ink-bar {
+    z-index: 1;
+    position: absolute;
+    box-sizing: border-box;
+    margin-top: -3px;
+    background-color: white;
+    transform-origin: 0 0;
+    width: 0;
+    height: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-base-ink-bar-animated { }
+
+  // tabs容器底部下划线-------------------------------------------------------------------
+  &-base-ink-bar-bottom {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: -3px;
+    background-color: #cccccc;
+    transform-origin: 0 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+  }
+}
