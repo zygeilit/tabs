@@ -1,19 +1,16 @@
-/* eslint react/no-multi-comp:0, no-console:0, react/prop-types:0 */
-import 'rc-tabs/assets/index.less';
-import React from 'react';
+
+import React, { Component } from 'react'
+import Tabs, { TabPane } from '../../src/index'
 import HTML5Backend from 'react-dnd-html5-backend'
-import ReactDOM from 'react-dom';
-import Tabs, { TabPane } from 'rc-tabs';
 import update from 'immutability-helper';
-import TabContent from 'rc-tabs/lib/SwipeableTabContent';
-import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
+import TabContent from '../../src/TabContent';
+import ScrollableInkTabBar from '../../src/ScrollableInkTabBar';
 import {
 	DragSource,
   DropTarget,
   DragDropContextProvider,
 } from 'react-dnd';
 
-// Drag & Drop node
 class TabNode extends React.Component {
   render() {
 		const {
@@ -72,7 +69,7 @@ const WrapTabNode = DropTarget(
 class Demo extends React.Component {
   state = {
     activeKey: '1',
-    tabs: ['1', '2', '3'],
+    tabs: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
   };
 
   onChange = (activeKey) => {
@@ -115,7 +112,7 @@ class Demo extends React.Component {
     return (
       <DragDropContextProvider backend={HTML5Backend}>
         <div style={{ margin: 20 }}>
-          <h1>Simple Tabs</h1>
+          <h1>内容超出宽度</h1>
           <Tabs
             renderTabBar={() => (
               <ScrollableInkTabBar onTabClick={this.onTabClick}>
@@ -128,7 +125,7 @@ class Demo extends React.Component {
           >
             {this.state.tabs.map(id => (
               <TabPane tab={`tab ${id}`} key={id}>
-                {id}
+                我是内容 {id}
               </TabPane>
             ))}
           </Tabs>
@@ -138,4 +135,10 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, document.getElementById('__react-content'));
+export default class extends Component {
+  render () {
+    return <div style={{ 'width': 400 }}>
+      <Demo />
+    </div>
+  }
+}

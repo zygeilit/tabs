@@ -1,0 +1,75 @@
+
+@tabs-prefix-cls: phoenix-nav;
+
+.@{tabs-prefix-cls} {
+
+    &-tabs-container {
+      border: solid 1px red;
+      position: relative;
+      width: 80%;
+      box-sizing: border-box;
+      border-right: solid 1px blue;
+    }
+
+    &-tabs {
+      overflow: hidden;
+      box-sizing: border-box;
+      padding-right: 160px;
+      width: 9999px;
+    }
+
+    &-tabs-placeholder {
+      visibility: hidden;
+      position: relative;
+      width: 9999px;
+      top: 0;
+    }
+  
+    &-tab-item {
+      float: left;
+      text-align: left;
+      max-width: 89px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &-content {
+        display: inline-block;
+        background-color: #cccccc;
+        padding: 0 8px;
+        box-sizing: border-box;
+      }
+    }
+  
+    &-more {
+      visibility: hidden;
+      display: inline-block;
+      box-sizing: border-box;
+      background-color: red;
+
+      &-dropdown {
+        position: absolute;
+        width: 200px;
+        background-color: #cccccc;
+
+        &-visiable {
+          visibility: hidden;
+        }
+
+        span {
+          width: 100%;
+          float: left;
+        }
+      }
+
+      &-visiable {
+        width: auto;
+        visibility: visible;
+      }
+  
+      span {
+        cursor: pointer;
+        padding: 0 12px;
+      }
+    }
+  }
