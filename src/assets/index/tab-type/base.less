@@ -2,8 +2,7 @@
 
   // 根节点容器-------------------------------------------------------------------
   &-base-bar {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 12px;
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
@@ -20,17 +19,18 @@
     box-sizing: border-box;
     position: relative;
     display: block;
-    padding: 2px 4px;
-    font-weight: 500;
+    height: 28px;
+    line-height: 20px;
+    padding: 4px 8px;
+    max-width: 92px;
     float: left;
-    height: 100%;
     cursor: pointer;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
   }
 
   &-base-tab-active {
-    color: #108ee9;
+    color: #106ECC;
     cursor: default;
-    height: 100%;
 
     &:before {
       content: '';

@@ -5,6 +5,10 @@ import ResizeObserver from 'resize-observer-polyfill';
 import debounce from 'lodash/debounce';
 import { isVertical } from './utils';
 
+const lastItemWidth = {
+  'base': 160
+}
+
 export default class TabBarTabsNode extends React.Component {
 
   containerPlaceholderRef = React.createRef()
@@ -23,7 +27,7 @@ export default class TabBarTabsNode extends React.Component {
   }
 
   refreshTabNav() {
-    const { prefixCls, 'panels': children, getRef } = this.props;
+    const { prefixCls, 'panels': children, getRef, tabType } = this.props;
     const containerWidth = getRef('navTabsContainer').offsetWidth;
     const items = this.containerPlaceholderRef.current.querySelectorAll(`.${prefixCls}-base-tab`);
     let hasMoreItem = false;
@@ -31,7 +35,8 @@ export default class TabBarTabsNode extends React.Component {
 
     for (let i=0; i<items.length; i++) {
       const restWidth = containerWidth - items[i].offsetLeft;
-      if (restWidth < 360) {
+      // 最后一个item必须使用指定的宽度
+      if (restWidth < lastItemWidth[tabType]) {
         hasMoreItem = true;
         lastItemIndex = i-1;
         break;

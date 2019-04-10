@@ -6,6 +6,8 @@ import KeyCode from './KeyCode';
 import TabPane from './TabPane';
 import { getDataAttr } from './utils';
 import Sentinel, { SentinelProvider } from './Sentinel';
+import MoreableTabBar from './MoreableTabBar';
+import TabContent from './TabContent';
 
 function noop() {
 }
@@ -158,7 +160,7 @@ export default class Tabs extends React.Component {
 
   render() {
     const props = this.props;
-    const {
+    let {
       prefixCls,
       navWrapper,
       tabBarPosition, className,
@@ -173,6 +175,9 @@ export default class Tabs extends React.Component {
       [`${prefixCls}-${tabBarPosition}`]: 1,
       [className]: !!className,
     });
+
+    if (!renderTabBar) renderTabBar = () => <MoreableTabBar />
+    if (!renderTabContent) renderTabContent = () => <TabContent animatedWithMargin />
 
     this.tabBar = renderTabBar();
 

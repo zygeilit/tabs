@@ -1,14 +1,10 @@
 
 import React, { Component } from 'react'
 import Tabs, { TabPane } from '../../src/index'
-import HTML5Backend from 'react-dnd-html5-backend'
 import update from 'immutability-helper';
-import TabContent from '../../src/TabContent';
-import MoreableTabBar from '../../src/MoreableTabBar';
 import {
 	DragSource,
   DropTarget,
-  DragDropContextProvider,
 } from 'react-dnd';
 
 class TabNode extends React.Component {
@@ -68,8 +64,8 @@ const WrapTabNode = DropTarget(
 // Demo
 class Demo extends React.Component {
   state = {
-    activeKey: '1',
-    tabs: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '23', '24', '25', '26', '27', '28', '29'],
+    activeKey: '0',
+    tabs: [ '页签1', '页签2', '页签3', '页签4', '页签5', '页签6', '页签7', '页签8', '页签9', '页签10', '页签11', '页签12', '页签13', '页签14', '页签15', '页签16', '页签17' ],
   };
 
   onChange = (activeKey) => {
@@ -112,18 +108,12 @@ class Demo extends React.Component {
     return (
         <div style={{ margin: 20 }}>
           <Tabs
-           tabType={'base'}
-            renderTabBar={() => (
-              <MoreableTabBar onTabClick={this.onTabClick}>
-                {this.renderTabBarNode}
-              </MoreableTabBar>
-            )}
-            renderTabContent={() => <TabContent animatedWithMargin />}
+            tabType={'base'}
             activeKey={this.state.activeKey}
             onChange={this.onChange}
           >
-            {this.state.tabs.map(id => (
-              <TabPane tab={`tab ${id}`} key={id}>
+            {this.state.tabs.map((id, index) => (
+              <TabPane tab={`${id}`} key={index}>
                 我是内容 {id}
               </TabPane>
             ))}
